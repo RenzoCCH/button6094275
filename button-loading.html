@@ -24,14 +24,41 @@ Example:
       :host {
           display: block;
           box-sizing: border-box;
+          background: none repeat scroll 0 0 transparent;
+          border: medium none;
+          border-spacing: 0;
+          color: #26589F;
+          font-family: 'PT Sans Narrow',sans-serif;
+          font-size: 16px;
+          font-weight: normal;
+          line-height: 1.42rem;
+          list-style: none outside none;
+          margin: 0;
+          padding: 0;
+          text-align: left;
+          text-decoration: none;
+          text-indent: 0;
+          overflow: hidden;
+          width:  var(--my-width, auto);
+          height:  var(--my-height, auto);
+          border: 1px solid red;
       }
-
+      :host:focus
+      {
+          outline: 0;
+      }
       :host([pressed]) {
           border: 1px solid red;
           -webkit-border-radius: 50%;
           -moz-border-radius: 50%;
           border-radius: 50%;
-
+          height:  var(--my-height-press, 50px);
+          width:  var(--my-height-press, 50px);
+          -webkit-transition: all 1s;
+          -moz-transition: all 1s;
+          -ms-transition: all 1s;
+          -o-transition: all 1s;
+          transition: all 1s;
       }
   </style>
 
@@ -58,7 +85,15 @@ Example:
         listeners: {
             'tap': 'press'
         },
+        attached: function() {
+            this.customStyle['--my-height'] = this.offsetHeight + "px";
+            this.customStyle['--my-width'] = this.offsetWidth + "px";
+            this.updateStyles();
+        },
         press: function() {
+
+            this.customStyle['--my-height-press'] = this.offsetHeight + "px";
+            this.updateStyles();
             this.pressed = !this.pressed;
         }
     });
