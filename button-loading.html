@@ -23,15 +23,8 @@ Example:
   <style>
       :host {
           display: block;
-          box-sizing: border-box;
-          background: none repeat scroll 0 0 transparent;
           border: medium none;
-          border-spacing: 0;
-          color: #26589F;
-          font-family: 'PT Sans Narrow',sans-serif;
-          font-size: 16px;
           font-weight: normal;
-          line-height: 1.42rem;
           list-style: none outside none;
           margin: 0;
           padding: 0;
@@ -39,8 +32,15 @@ Example:
           text-decoration: none;
           text-indent: 0;
           overflow: hidden;
-          width:  var(--my-width, auto);
-          height:  var(--my-height, auto);
+          /*width:  var(--my-width, auto);*/
+          /*height:  var(--my-height, auto);*/
+          width:  100px;
+          height:  100px;
+          -webkit-transition: all 1s;
+          -moz-transition: all 1s;
+          -ms-transition: all 1s;
+          -o-transition: all 1s;
+          transition: all 1s;
           border: 1px solid red;
       }
       :host:focus
@@ -48,7 +48,6 @@ Example:
           outline: 0;
       }
       :host([pressed]) {
-          border: 1px solid red;
           -webkit-border-radius: 50%;
           -moz-border-radius: 50%;
           border-radius: 50%;
@@ -59,12 +58,154 @@ Example:
           -ms-transition: all 1s;
           -o-transition: all 1s;
           transition: all 1s;
+          
+      }
+      :host  .loading{
+          display: none;
+          background-color: transparent;
+          height:  100%;
+          width:  100%;
+          position: relative;
+
+      }
+      :host([pressed]) .loading {
+          display: block;
+      }
+      :host([pressed]) .button-container
+      {
+          display: none;
+      }
+      :host .loading .loading-circle{
+          position: absolute;                  
+          top: 0;
+          width: 0;
+          height:  100%;
+          width:  100%;
+      }
+      :host .loading .loading-circle:before {
+          content: '';
+          display: block;
+          margin: 5% auto;
+          width: 15%;
+          height: 15%;
+          background-color: #ffff00;
+          border-radius: 100%;
+          -webkit-animation: loadingFade 1.2s infinite ease-in-out both;
+          -o-animation: loadingFade 1.2s infinite ease-in-out both;
+          animation: loadingFade 1.2s infinite ease-in-out both;
+          /*-webkit-animation: sk-circleFadeDelay 1.2s infinite ease-in-out both;*/
+          /*animation: sk-circleFadeDelay 1.2s infinite ease-in-out both;*/
+      }
+      :host .loading .loading-circle .loading-circle-2{
+          -webkit-transform: rotate(30deg);
+          -moz-transform: rotate(30deg);
+          -ms-transform: rotate(30deg);
+          -o-transform: rotate(30deg);
+          transform: rotate(30deg);
+      }
+      :host .loading .loading-circle .loading-circle-3{
+          -webkit-transform: rotate(60deg);
+          -moz-transform: rotate(60deg);
+          -ms-transform: rotate(60deg);
+          -o-transform: rotate(60deg);
+          transform: rotate(60deg);
+      }
+      :host .loading .loading-circle .loading-circle-4{
+          -webkit-transform: rotate(90deg);
+          -moz-transform: rotate(90deg);
+          -ms-transform: rotate(90deg);
+          -o-transform: rotate(90deg);
+          transform: rotate(90deg);
+      }
+      :host .loading .loading-circle .loading-circle-5{
+          -webkit-transform: rotate(120deg);
+          -moz-transform: rotate(120deg);
+          -ms-transform: rotate(120deg);
+          -o-transform: rotate(120deg);
+          transform: rotate(120deg);
+      }
+      :host .loading .loading-circle .loading-circle-6{
+          -webkit-transform: rotate(150deg);
+          -moz-transform: rotate(150deg);
+          -ms-transform: rotate(150deg);
+          -o-transform: rotate(150deg);
+          transform: rotate(150deg);
+      }
+      :host .loading .loading-circle .loading-circle-7{
+          -webkit-transform: rotate(180deg);
+          -moz-transform: rotate(180deg);
+          -ms-transform: rotate(180deg);
+          -o-transform: rotate(180deg);
+          transform: rotate(180deg);
+      }
+      :host .loading .loading-circle .loading-circle-8{
+          -webkit-transform: rotate(210deg);
+          -moz-transform: rotate(210deg);
+          -ms-transform: rotate(210deg);
+          -o-transform: rotate(210deg);
+          transform: rotate(210deg);
+      }
+      :host .loading .loading-circle .loading-circle-9{
+          -webkit-transform: rotate(240deg);
+          -moz-transform: rotate(240deg);
+          -ms-transform: rotate(240deg);
+          -o-transform: rotate(240deg);
+          transform: rotate(240deg);
+      }
+      :host .loading .loading-circle .loading-circle-10{
+          -webkit-transform: rotate(270deg);
+          -moz-transform: rotate(270deg);
+          -ms-transform: rotate(270deg);
+          -o-transform: rotate(270deg);
+          transform: rotate(270deg);
+      }
+      :host .loading .loading-circle .loading-circle-11{
+          -webkit-transform: rotate(300deg);
+          -moz-transform: rotate(300deg);
+          -ms-transform: rotate(300deg);
+          -o-transform: rotate(300deg);
+          transform: rotate(300deg);
+      }
+      :host .loading .loading-circle .loading-circle-12{
+          -webkit-transform: rotate(330deg);
+          -moz-transform: rotate(330deg);
+          -ms-transform: rotate(330deg);
+          -o-transform: rotate(330deg);
+          transform: rotate(330deg);
+      }
+      @-webkit-keyframes loadingFade {
+          0%, 39%, 100% { opacity: 0; }
+          40% { opacity: 1; }
+      }
+      @-o-keyframes loadingFade {
+          0%, 39%, 100% { opacity: 0; }
+          40% { opacity: 1; }
+      }
+      @keyframes loadingFade {
+          0%, 39%, 100% { opacity: 0; }
+          40% { opacity: 1; }
       }
   </style>
 
-  <template>
-    <content></content>
-  </template>
+    <template>
+        <div class="button-container">
+            <content></content>
+        </div>
+        <div class="loading">
+            <div class="loading-circle loading-circle-1"></div>
+            <div class="loading-circle loading-circle-2"></div>
+            <div class="loading-circle loading-circle-3"></div>
+            <div class="loading-circle loading-circle-4"></div>
+            <div class="loading-circle loading-circle-5"></div>
+            <div class="loading-circle loading-circle-6"></div>
+            <div class="loading-circle loading-circle-7"></div>
+            <div class="loading-circle loading-circle-8"></div>
+            <div class="loading-circle loading-circle-9"></div>
+            <div class="loading-circle loading-circle-10"></div>
+            <div class="loading-circle loading-circle-11"></div>
+            <div class="loading-circle loading-circle-12"></div>
+        </div>
+    </template>
 
 </dom-module>
 
