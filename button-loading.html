@@ -30,7 +30,7 @@
           -ms-transition: all  0.5s;
           -o-transition: all  0.5s;
           transition: all  0.5s;
-          
+
       }
       :host  .loading{
           display: none;
@@ -223,26 +223,27 @@
           0%, 39%, 100% { opacity: 0; }
           40% { opacity: 1; }
       }
+
   </style>
 
     <template>
-        <div class="button-container">
-            <content></content>
-        </div>
-        <div class="loading">
-            <div class="loading-circle loading-circle-1"></div>
-            <div class="loading-circle loading-circle-2"></div>
-            <div class="loading-circle loading-circle-3"></div>
-            <div class="loading-circle loading-circle-4"></div>
-            <div class="loading-circle loading-circle-5"></div>
-            <div class="loading-circle loading-circle-6"></div>
-            <div class="loading-circle loading-circle-7"></div>
-            <div class="loading-circle loading-circle-8"></div>
-            <div class="loading-circle loading-circle-9"></div>
-            <div class="loading-circle loading-circle-10"></div>
-            <div class="loading-circle loading-circle-11"></div>
-            <div class="loading-circle loading-circle-12"></div>
-        </div>
+            <div class="button-container">
+                <content></content>
+            </div>
+            <div class="loading">
+                <div class="loading-circle loading-circle-1"></div>
+                <div class="loading-circle loading-circle-2"></div>
+                <div class="loading-circle loading-circle-3"></div>
+                <div class="loading-circle loading-circle-4"></div>
+                <div class="loading-circle loading-circle-5"></div>
+                <div class="loading-circle loading-circle-6"></div>
+                <div class="loading-circle loading-circle-7"></div>
+                <div class="loading-circle loading-circle-8"></div>
+                <div class="loading-circle loading-circle-9"></div>
+                <div class="loading-circle loading-circle-10"></div>
+                <div class="loading-circle loading-circle-11"></div>
+                <div class="loading-circle loading-circle-12"></div>
+            </div>
     </template>
 
 </dom-module>
@@ -272,10 +273,12 @@
             this.updateStyles();
         },
         press: function() {
-
-            this.customStyle['--my-height-press'] = this.offsetHeight + "px";
-            this.updateStyles();
-            this.pressed = !this.pressed;
+            if(!this.pressed)
+            {
+                this.customStyle['--my-height-press'] = this.offsetHeight + "px";
+                this.updateStyles();
+                this.pressed = !this.pressed;
+            }
         }
     });
 
